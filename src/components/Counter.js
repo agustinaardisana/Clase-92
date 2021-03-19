@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Counter.scss";
 
-const Counter = () => {
+const Counter = ({ resetedValue }) => {
   const [numberOfClicks, increaseFactor] = useState(0);
 
   const handleClickPositive = () => {
@@ -15,7 +15,7 @@ const Counter = () => {
   return (
     <div className="counter-container">
       <button onClick={handleClickNegative}>-</button>
-      <span>{numberOfClicks}</span>
+      <span>{resetedValue ? 0 : numberOfClicks}</span>
       <button onClick={handleClickPositive}>+</button>
     </div>
   );

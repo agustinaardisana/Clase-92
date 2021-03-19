@@ -1,6 +1,6 @@
-import "./App.scss";
+import React, { useState } from "react";
 import Counter from "./components/Counter";
-import Button from "./components/Button";
+import "./App.scss";
 
 // Hacer un contador que funcione de la siguiente manera
 // - 0 +
@@ -11,15 +11,23 @@ import Button from "./components/Button";
 
 // Una vez funcionando los tres contadores, agregar un boton que sea "Borrar todos", que vuelva el valor de todos los contadores a 0.
 
-function App() {
+const App = () => {
+  const [resetedValue, setReset] = useState(false);
+
+  const handleClickReset = () => {
+    setReset(true);
+  };
+
   return (
     <div className="container">
-      <Counter></Counter>
-      <Counter></Counter>
-      <Counter></Counter>
-      <Button className="clean-button"></Button>
+      <Counter resetedValue={resetedValue} />
+      <Counter resetedValue={resetedValue} />
+      <Counter resetedValue={resetedValue} />
+      <button className="clean-button" onClick={handleClickReset}>
+        Borrar todos
+      </button>
     </div>
   );
-}
+};
 
 export default App;
